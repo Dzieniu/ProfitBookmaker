@@ -5,17 +5,30 @@
  */
 package matchPackages;
 
+import bookcalculates.CalculateWinChance;
+import java.util.ArrayList;
+
 /**
  *
  * @author Konrad
  */
 public class TestClas {
     
-    public static void main(String args[]){
-    
-        ReadMatches rm = new ReadMatches();
-        
-        System.out.println(rm.getMatches().get(2).getName());
-    }
+//    public static void main(String args[]){
+//    
+//        ReadMatches rm = new ReadMatches();
+//        ArrayList<Match> matches = new ArrayList<>();
+//        matches = rm.getMatches();
+//        CalculateWinChance winChance = new CalculateWinChance();
+//        
+//        winChance.winChance(matches);
+//        winChance.bestBook(matches);
+//        
+//        for(Match match:matches){
+//            System.out.println(match.toString());
+//        }
+//        
+//        
+//    }
     
 }

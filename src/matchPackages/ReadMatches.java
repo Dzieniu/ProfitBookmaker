@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class ReadMatches {
     
-    ArrayList<Match> matches = new ArrayList<>();
+    private ArrayList<Match> matches = new ArrayList<>();
     
     public ReadMatches(){
     }
@@ -32,21 +32,32 @@ public class ReadMatches {
             int i = 0;
             
             while((line = reader.readLine()) !=null){
-                if (count%4 == 3) {
-                       matches.get(i).setCourse1(Double.parseDouble(line)); 
-                   } else if (count%4 == 2) {
-                       matches.get(i).setCourse2(Double.parseDouble(line));  
-                   } else if (count%4 == 1) {
-                       matches.get(i).setCourseX(Double.parseDouble(line));  
-                   } else {
-                       
+                if (line.contains(":")) {
                        matches.add(new Match(line));
+                       count=1;
+                   }else if(line.contains("Statystyki")){
                    }
-                   count++;
+                    else if (count==1) {
+                       matches.get(i).setCourse1(Double.parseDouble(line));  
+                       count =2;
+                   } else if (count==2) {
+                       matches.get(i).setCourseX(Double.parseDouble(line));
+                       count = 3;
+                   } else if (count==3) {
+                       matches.get(i).setCourse2(Double.parseDouble(line));
+                       i++;
+                       count=4;
+                   }else if (count==4) {
+                       count = 5;
+                   }else if (count==5) {
+                       count = 6;
+                   }else if (count==6) {
+                       count = 0;
+                   }
             }
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "");
+            JOptionPane.showMessageDialog(null, "Coś nie tak z plikiem");
         }
         return matches;
     }
