@@ -33,7 +33,8 @@ public class ReadMatches {
             
             while((line = reader.readLine()) !=null){
                 if (line.contains(":")) {
-                       matches.add(new Match(line));
+                       String r[] = line.split("\t", 2);
+                       matches.add(new Match(r[0]+ " "+ r[1]));
                        count=1;
                    }else if(line.contains("Statystyki")){
                    }
